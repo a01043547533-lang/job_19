@@ -15,6 +15,7 @@ def search():
     error = None
     if not keyword:
         error = "검색어를 입력해 주세요."
+
     else:
         try:
             jobs = search_incruit(keyword)

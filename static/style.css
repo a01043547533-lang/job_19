@@ -1,0 +1,427 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+    --ink: #111827;
+    --ink-soft: #4b5563;
+    --ink-faint: #9ca3af;
+    --navy: #0f1f3d;
+    --accent: #1f5eff;
+    --accent-dark: #1748c9;
+    --line: #e5e7eb;
+    --paper: #f7f7f5;
+    --white: #ffffff;
+    --danger: #b42318;
+    --danger-bg: #fef3f2;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* 상단 바 */
+.topbar {
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+}
+
+.topbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--navy);
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.topbar nav a {
+    margin-left: 28px;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-soft);
+}
+
+.topbar nav a:hover {
+    color: var(--ink);
+}
+
+/* 메인 */
+.hero {
+    background: var(--navy);
+    color: var(--white);
+    padding: 120px 0 128px;
+}
+
+.hero .eyebrow {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: #a9bcff;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.035em;
+}
+
+.hero p {
+    margin-top: 18px;
+    font-size: 18px;
+    color: #c7cedb;
+}
+
+.search-form {
+    display: flex;
+    max-width: 640px;
+    margin-top: 44px;
+    background: var(--white);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.search-form input {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    padding: 0 22px;
+    height: 60px;
+    font: inherit;
+    font-size: 17px;
+    color: var(--ink);
+    outline: none;
+}
+
+.search-form input::placeholder {
+    color: var(--ink-faint);
+}
+
+.search-form button {
+    border: 0;
+    padding: 0 34px;
+    font: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    background: var(--accent);
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background: var(--accent-dark);
+}
+
+.keywords {
+    margin-top: 22px;
+    font-size: 14px;
+    color: #8e9ab0;
+}
+
+.keywords a {
+    margin-left: 14px;
+    color: #c7cedb;
+    border-bottom: 1px solid rgba(199, 206, 219, 0.4);
+}
+
+.keywords a:hover {
+    color: var(--white);
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    margin: 72px 0 96px;
+    background: var(--line);
+    border: 1px solid var(--line);
+}
+
+.feature {
+    background: var(--white);
+    padding: 36px 32px;
+}
+
+.feature .num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.feature h3 {
+    margin-top: 12px;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.feature p {
+    margin-top: 8px;
+    font-size: 15px;
+    color: var(--ink-soft);
+}
+
+/* 검색 결과 */
+.result-head {
+    background: var(--white);
+    border-bottom: 1px solid var(--line);
+    padding: 48px 0 40px;
+}
+
+.result-head h1 {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+}
+
+.result-head h1 em {
+    font-style: normal;
+    color: var(--accent);
+}
+
+.result-head .count {
+    margin-top: 6px;
+    font-size: 15px;
+    color: var(--ink-soft);
+}
+
+.result-head .count strong {
+    color: var(--ink);
+}
+
+.result-head .search-form {
+    margin-top: 28px;
+    border: 1px solid #d1d5db;
+}
+
+.result-head .search-form input {
+    height: 52px;
+    font-size: 16px;
+}
+
+.result-body {
+    padding: 40px 0 96px;
+}
+
+.alert {
+    padding: 18px 22px;
+    border: 1px solid #fecdca;
+    border-radius: 6px;
+    background: var(--danger-bg);
+    color: var(--danger);
+    font-size: 15px;
+}
+
+.empty {
+    padding: 80px 0;
+    text-align: center;
+    color: var(--ink-soft);
+}
+
+.empty strong {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 18px;
+    color: var(--ink);
+}
+
+.job-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-top: 2px solid var(--navy);
+}
+
+.job-table th {
+    padding: 16px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    background: #fafafa;
+}
+
+.job-table td {
+    padding: 22px 18px;
+    font-size: 15px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+}
+
+.job-table tbody tr:hover {
+    background: #f8faff;
+}
+
+.job-table .col-no {
+    width: 64px;
+    color: var(--ink-faint);
+    text-align: center;
+}
+
+.job-table .col-company {
+    width: 200px;
+    font-weight: 600;
+}
+
+.job-table .col-title {
+    color: var(--ink);
+}
+
+.job-table .col-location {
+    width: 160px;
+    color: var(--ink-soft);
+}
+
+.job-table .col-link {
+    width: 110px;
+    text-align: right;
+}
+
+.btn-view {
+    display: inline-block;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.btn-view:hover {
+    color: var(--white);
+    background: var(--accent);
+}
+
+/* 하단 */
+.footer {
+    border-top: 1px solid var(--line);
+    background: var(--white);
+    padding: 28px 0;
+    font-size: 13px;
+    color: var(--ink-faint);
+}
+
+/* 모바일 */
+@media (max-width: 760px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .topbar nav {
+        display: none;
+    }
+
+    .hero {
+        padding: 72px 0 80px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .search-form button {
+        padding: 0 20px;
+    }
+
+    .keywords a {
+        margin-left: 10px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+        margin: 48px 0 64px;
+    }
+
+    .result-head h1 {
+        font-size: 24px;
+    }
+
+    .job-table thead {
+        display: none;
+    }
+
+    .job-table,
+    .job-table tbody,
+    .job-table tr,
+    .job-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .job-table tr {
+        position: relative;
+        padding: 20px 16px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .job-table td {
+        padding: 0;
+        border: 0;
+        text-align: left;
+    }
+
+    .job-table .col-no {
+        display: none;
+    }
+
+    .job-table .col-company {
+        width: auto;
+        font-size: 14px;
+        color: var(--ink-soft);
+    }
+
+    .job-table .col-title {
+        margin-top: 4px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .job-table .col-location {
+        width: auto;
+        margin-top: 6px;
+        font-size: 14px;
+    }
+
+    .job-table .col-link {
+        width: auto;
+        margin-top: 14px;
+        text-align: left;
+    }
+}

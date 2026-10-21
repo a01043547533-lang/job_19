@@ -1,29 +1,77 @@
-<html>
-    <head></head>
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{{ keyword }} 검색 결과 - 잡스크래퍼</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    </head>
     <body>
-        <h1>{{ keyword }} 잡서치결과 페이지입니다.</h1>
-        <table>
-            <thead>
-                <tr>
-                    <th>순번</th>
-                    <th>회사명</th>
-                    <th>공고제목</th>
-                    <th>회사위치</th>
-                    <th>상세보기</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for job in jobs %}
-                <tr>
-                    <td>{{ loop.index }}</td>
-                    <td>{{ job["company"] }}</td>
-                    <td>{{ job["title"] }}</td>
-                    <td>{{ job["location"] }}</td>
-                    <td>{{ job["link"] }}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <header class="topbar">
+            <div class="container">
+                <a href="/" class="logo">JOB<span>SCRAPER</span></a>
+                <nav>
+                    <a href="/">채용정보</a>
+                    <a href="/search?keyword=신입">신입공고</a>
+                    <a href="/search?keyword=인턴">인턴</a>
+                </nav>
+            </div>
+        </header>
 
+        <section class="result-head">
+            <div class="container">
+                <h1>{% if keyword %}<em>‘{{ keyword }}’</em> 검색 결과{% else %}채용공고 검색{% endif %}</h1>
+                {% if not error %}
+                <p class="count">총 <strong>{{ jobs|length }}</strong>건의 채용공고가 있습니다.</p>
+                {% endif %}
+
+                <form action="/search" class="search-form">
+                    <input type="text" name="keyword" value="{{ keyword }}" placeholder="직무, 회사명, 기술 스택을 입력하세요" autocomplete="off" required />
+                    <button>검색하기</button>
+                </form>
+            </div>
+        </section>
+
+        <main class="result-body">
+            <div class="container">
+                {% if error %}
+                <div class="alert">{{ error }}</div>
+                {% elif not jobs %}
+                <div class="empty">
+                    <strong>검색 결과가 없습니다.</strong>
+                    다른 키워드로 다시 검색해 보세요.
+                </div>
+                {% else %}
+                <table class="job-table">
+                    <thead>
+                        <tr>
+                            <th class="col-no">순번</th>
+                            <th class="col-company">회사명</th>
+                            <th class="col-title">공고제목</th>
+                            <th class="col-location">회사위치</th>
+                            <th class="col-link">상세보기</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for job in jobs %}
+                        <tr>
+                            <td class="col-no">{{ loop.index }}</td>
+                            <td class="col-company">{{ job["company"] }}</td>
+                            <td class="col-title">{{ job["title"] }}</td>
+                            <td class="col-location">{{ job["location"] }}</td>
+                            <td class="col-link">
+                                <a href="{{ job['link'] }}" class="btn-view" target="_blank" rel="noopener">공고보기</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">© JobScraper. 채용 정보 출처: 인크루트</div>
+        </footer>
     </body>
 </html>
